@@ -1,0 +1,85 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+        {
+            "files": ["*.ts", "*.js"],
+            "parserOptions": {
+                "project": ["./tsconfig.json"], // Specify it only for TypeScript files
+                "sourceType": "module"
+            }
+        }
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "root": true,
+    "env": {
+      "node": true,
+      "es2020": true
+    },
+    "rules": {
+      "@typescript-eslint/interface-name-prefix": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "import/namespace": "off",
+      "import/order": "off",
+      "indent": ["warn", 2, { "SwitchCase": 1, "MemberExpression": 1, "ignoredNodes": ["PropertyDefinition"] }],
+      "linebreak-style": ["warn", "unix"],
+      "eqeqeq": "off",
+      "quotes": ["warn", "single", { "allowTemplateLiterals": true }],
+      "semi": ["warn", "always"],
+      "keyword-spacing": ["warn"],
+      "space-before-function-paren": ["warn", "always"],
+      "array-callback-return": "warn",
+      "consistent-return": "warn",
+      "curly": ["error", "all"],
+      "default-case": "warn",
+      "dot-location": ["warn", "property"],
+      "no-empty": ["warn", { "allowEmptyCatch": true }],
+      "no-async-promise-executor": "off",
+      "no-compare-neg-zero": "warn",
+      "no-alert": "warn",
+      "no-console": ["warn", { "allow": ["warn", "error", "info", "time", "timeEnd"] }],
+      "no-else-return": "warn",
+      "no-eval": "error",
+      "no-extend-native": "error",
+      "no-floating-decimal": "warn",
+      "no-invalid-this": "error",
+      "no-iterator": "error",
+      "no-labels": "error",
+      "no-loop-func": "warn",
+      "no-multi-spaces": "warn",
+      "no-new": "error",
+      "no-new-func": "error",
+      "no-new-wrappers": "error",
+      "no-self-compare": "error",
+      "no-sequences": "error",
+      "no-throw-literal": "error",
+      "no-unmodified-loop-condition": "error",
+      "no-unused-vars": "warn",
+      "no-useless-concat": "warn",
+      "no-useless-escape": "warn",
+      "no-useless-return": "warn",
+      "no-void": "error",
+      "no-with": "error",
+      "block-spacing": "warn",
+      "camelcase": ["error", { "properties": "always" }],
+      "comma-dangle": ["warn", "always-multiline"],
+      "comma-spacing": ["warn", { "before": false, "after": true }],
+      "comma-style": ["warn", "last"],
+      "func-call-spacing": ["warn", "never"],
+      "space-in-parens": ["warn", "never"],
+      "no-var": "error",
+      "arrow-parens": ["warn", "always"]
+    },
+    "ignorePatterns": [
+      "src/migrations/*",
+      "migrations/*"
+    ]
+}

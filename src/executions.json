@@ -276,5 +276,73 @@
         "output": 15
       }
     ]
+  },
+  {
+    "pipelineId": "math-pipeline-001",
+    "timestamp": "2025-03-14T14:55:06.229Z",
+    "status": "running",
+    "result": null
+  },
+  {
+    "pipelineId": "math-pipeline-001",
+    "timestamp": "2025-03-14T14:55:06.243Z",
+    "status": "success",
+    "result": 15,
+    "executionTrace": [
+      {
+        "nodeId": "input-1",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 5
+      },
+      {
+        "nodeId": "return-result",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 15
+      },
+      {
+        "nodeId": "input-2",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 3
+      },
+      {
+        "nodeId": "input-3",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 2
+      },
+      {
+        "nodeId": "input-4",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 7
+      },
+      {
+        "nodeId": "input-5",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 2
+      },
+      {
+        "nodeId": "transform-plus-1",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 10
+      },
+      {
+        "nodeId": "transform-plus-2",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 17
+      },
+      {
+        "nodeId": "transform-minus-1",
+        "status": "completed",
+        "timestamp": "2025-03-14T14:55:06.243Z",
+        "output": 15
+      }
+    ]
   }
 ]

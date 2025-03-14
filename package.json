@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.1",
-    "@types/node": "^18.19.75",
+    "@types/node": "^18.19.80",
     "@types/redis": "^4.0.11",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
