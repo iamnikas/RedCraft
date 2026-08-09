@@ -1,0 +1,44 @@
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# NPM
+node_modules/
+
+# ENV
+.env
+
+# Misc
+.DS_Store
+
+# YARN
+yarn-error.log
+
+# Build
+build/
+build_*/
+storybook-static/
+
+# Reports
+coverage/
+npm-audit/
+
+# Tests
+/coverage
+/tests/__snapshots__/__diff_output__
+
+# Configs
+config/local.json
+node_modules

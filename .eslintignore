@@ -1,0 +1,17 @@
+build
+node_modules
+devops
+tsconfig.*
+.vscode
+src/bc_btc/*
+src/bc_bsc/*
+src/bc_trx/*
+src/bc_eth/app.js
+src/common/kafka.js
+src/common/web3.js
+src/common/rates.js
+src/common/postgre.js
+src/constants/firstBlock.js
+src/common/fetchFunction.js
+src/common/constants.js
+src/startLoops.js

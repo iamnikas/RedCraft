@@ -1,0 +1,467 @@
+{
+  "project": {
+    "id": "math-test-project-001",
+    "name": "Test Math Project",
+    "description": "Simple project with math operations",
+    "created": "2024-03-20T10:00:00Z",
+    "updated": "2024-03-20T10:00:00Z",
+    "settings": {
+      "visibility": "private",
+      "tags": ["test", "math"]
+    }
+  },
+
+  "templates": [
+    {
+      "id": "simple-math-template-001",
+      "name": "Simple Addition Template",
+      "description": "Template for adding two numbers",
+      "version": "1.0.0",
+      "nodes": [
+        {
+          "id": "input-1",
+          "type": "number",
+          "config": {
+            "value": 5
+          }
+        },
+        {
+          "id": "input-2",
+          "type": "number",
+          "config": {
+            "value": 3
+          }
+        },
+        {
+          "id": "input-3",
+          "type": "number",
+          "config": {
+            "value": 2
+          }
+        },
+
+        {
+          "id": "input-4",
+          "type": "input",
+          "config": {
+            "inputType": "number"
+          }
+        },
+        {
+          "id": "input-5",
+          "type": "input",
+          "config": {
+            "inputType": "number"
+          }
+        },
+        {
+          "id": "transform-plus-1",
+          "type": "transform",
+          "config": {
+            "operation": "math",
+            "method": "plus"
+          }
+        },
+        {
+          "id": "transform-plus-2",
+          "type": "transform",
+          "config": {
+            "operation": "math",
+            "method": "plus"
+          }
+        },
+
+        {
+          "id": "transform-minus-1",
+          "type": "transform",
+          "config": {
+            "operation": "math",
+            "method": "minus"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "conn-1",
+          "sourceNodeId": "input-1",
+          "targetNodeId": "transform-plus-1",
+          "sourcePort": "output1",
+          "targetPort": "input1"
+        },
+        {
+          "id": "conn-2",
+          "sourceNodeId": "input-2",
+          "targetNodeId": "transform-plus-1",
+          "sourcePort": "output1",
+          "targetPort": "input2"
+        },
+        {
+          "id": "conn-3",
+          "sourceNodeId": "input-3",
+          "targetNodeId": "transform-plus-1",
+          "sourcePort": "output",
+          "targetPort": "input3"
+        },
+
+        {
+          "id": "conn-4",
+          "sourceNodeId": "transform-plus-1",
+          "targetNodeId": "transform-plus-2",
+          "sourcePort": "output",
+          "targetPort": "input4"
+        },
+
+        {
+          "id": "conn-5",
+          "sourceNodeId": "input-4",
+          "targetNodeId": "transform-plus-2",
+          "sourcePort": "output",
+          "targetPort": "input5"
+        },
+
+        {
+          "id": "conn-6",
+          "sourceNodeId": "transform-plus-2",
+          "targetNodeId": "transform-minus-1",
+          "sourcePort": "output",
+          "targetPort": "input5"
+        },
+
+        {
+          "id": "conn-7",
+          "sourceNodeId": "input-5",
+          "targetNodeId": "transform-minus-1",
+          "sourcePort": "output",
+          "targetPort": "input6"
+        },
+
+        {
+          "id": "conn-8",
+          "sourceNodeId": "transform-minus-1",
+          "targetNodeId": "return-result",
+          "sourcePort": "output",
+          "targetPort": "input6"
+        }
+      ],
+      "validation": {
+        "isValid": true,
+        "errors": []
+      }
+    }
+  ],
+
+  "types": {
+    "primitive": {
+      "number": {
+        "description": "Число с плавающей запятой или целое",
+        "validation": "^-?\\d+(\\.\\d+)?$",
+        "default": 0
+      },
+      "string": {
+        "description": "Строка любого формата",
+        "validation": "^.*$",
+        "default": ""
+      },
+      "boolean": {
+        "description": "Логический тип",
+        "validation": "^(true|false)$",
+        "default": false
+      }
+    },
+    "complex": {
+      "array<number>": {
+        "baseType": "array",
+        "itemType": "number"
+      },
+      "object": {
+        "description": "Произвольный объект",
+        "properties": {
+          "id": "string",
+          "name": "string",
+          "data": "any"
+        }
+      }
+    }
+  },
+
+  "nodeDefinitions": {
+    "code": {
+      "description": "Пользовательский блок выполнения JavaScript-кода",
+      "inputs": {
+        "params": { "type": "object", "description": "Параметры для исполнения кода" }
+      },
+      "outputs": {
+        "result": { "type": "any", "description": "Результат выполнения кода" }
+      },
+      "config": {
+        "script": { "type": "string", "description": "JavaScript-код для выполнения" }
+      }
+    },
+    "if": {
+      "description": "Блок условия IF",
+      "inputs": {
+        "condition": { "type": "boolean", "description": "Логическое условие" }
+      },
+      "outputs": {
+        "truePath": { "type": "boolean", "description": "Путь выполнения, если истина" },
+        "falsePath": { "type": "boolean", "description": "Путь выполнения, если ложь" }
+      }
+    },
+    "if-else": {
+      "description": "Блок условия IF-ELSE",
+      "inputs": {
+        "condition": { "type": "boolean", "description": "Логическое условие" }
+      },
+      "outputs": {
+        "truePath": { "type": "boolean", "description": "Путь выполнения, если истина" },
+        "falsePath": { "type": "boolean", "description": "Путь выполнения, если ложь" }
+      },
+      "config": {
+        "fallback": { "type": "boolean", "description": "Обязательный путь выполнения, если ложь" }
+      }
+    }
+  },
+
+  "pipelines": [
+    {
+      "id": "math-pipeline-001",
+      "projectId": "math-test-project-001",
+      "name": "summ(a, b) Pipeline",
+      "description": "Pipeline for adding two numbers",
+      "templateId": "simple-math-template-001",
+      "mode": "last-result",
+      "status": "active",
+      "created": "2024-03-20T10:00:00Z",
+      "updated": "2024-03-20T10:00:00Z",
+      "settings": {
+        "timeout": 60,
+        "retryPolicy": {
+          "attempts": 3,
+          "delay": 5
+        }
+      },
+      "trigger": {
+        "type": "manual",
+        "config": {
+          "inputValidation": true
+        }
+      }
+    }
+  ],
+
+  "templateComponents": {
+    "source": {
+      "types": {
+        "blockchain": {
+          "providers": {
+            "eth": {
+              "type": "source",
+              "config": {
+                "network": {
+                  "type": "enum",
+                  "values": ["mainnet", "testnet"],
+                  "required": true
+                },
+                "provider": {
+                  "type": "enum",
+                  "values": ["quicknode"],
+                  "required": true
+                }
+              },
+              "methods": {
+                "getBalance": {
+                  "inputs": {
+                    "address": {
+                      "type": "string",
+                      "validation": "^0x[a-fA-F0-9]{40}$"
+                    }
+                  },
+                  "output": {
+                    "type": "bigint",
+                    "description": "Balance in wei"
+                  }
+                },
+                "getTransaction": {
+                  "inputs": {
+                    "hash": {
+                      "type": "string",
+                      "validation": "^0x[a-fA-F0-9]{64}$"
+                    }
+                  },
+                  "output": {
+                    "type": "object",
+                    "properties": {
+                      "hash": "string",
+                      "from": "string",
+                      "to": "string",
+                      "value": "bigint",
+                      "gasUsed": "number",
+                      "blockNumber": "number"
+                    }
+                  }
+                },
+                "getBlock": {
+                  "inputs": {
+                    "number": { "type": "number" }
+                  },
+                  "output": {
+                    "type": "object",
+                    "properties": {
+                      "number": "number",
+                      "hash": "string",
+                      "timestamp": "number",
+                      "transactions": "array<string>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "http": {
+          "type": "source",
+          "config": {
+            "method": {
+              "type": "enum",
+              "values": ["GET", "POST", "PUT", "DELETE"]
+            },
+            "url": { "type": "string" },
+            "headers": { "type": "object" },
+            "body": { "type": "object" }
+          }
+        },
+        "database": {
+          "type": "source",
+          "config": {
+            "type": {
+              "type": "enum",
+              "values": ["postgres", "mysql", "mongodb"]
+            },
+            "connection": {
+              "host": "string",
+              "port": "number",
+              "database": "string",
+              "credentials": {
+                "username": "string",
+                "password": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "entity": {
+      "type": "component",
+      "config": {
+        "source": {
+          "type": "reference",
+          "target": "source",
+          "required": true
+        },
+        "method": {
+          "type": "dynamic",
+          "dependsOn": "source.type"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "name": "string",
+            "value": "any",
+            "type": "string"
+          }
+        }
+      }
+    },
+
+    "field": {
+      "type": "component",
+      "config": {
+        "source": {
+          "type": "reference",
+          "target": ["entity", "transform"],
+          "required": true
+        },
+        "path": {
+          "type": "string",
+          "description": "Dot notation path to field"
+        },
+        "alias": {
+          "type": "string",
+          "description": "Output field name"
+        }
+      }
+    },
+
+    "transform": {
+      "type": "component",
+      "operations": {
+        "math": {
+          "add": {
+            "inputs": [
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "output": { "type": "number" }
+          },
+          "subtract": {
+            "inputs": [
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "output": { "type": "number" }
+          },
+          "multiply": {
+            "inputs": [
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "output": { "type": "number" }
+          },
+          "divide": {
+            "inputs": [
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "output": { "type": "number" }
+          }
+        },
+        "string": {
+          "concat": {
+            "inputs": [
+              { "type": "string" },
+              { "type": "string" }
+            ],
+            "output": { "type": "string" }
+          },
+          "substring": {
+            "inputs": [
+              { "type": "string" },
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "output": { "type": "string" }
+          }
+        },
+        "array": {
+          "map": {
+            "input": { "type": "array" },
+            "transform": { "type": "function" },
+            "output": { "type": "array" }
+          },
+          "filter": {
+            "input": { "type": "array" },
+            "condition": { "type": "function" },
+            "output": { "type": "array" }
+          },
+          "reduce": {
+            "input": { "type": "array" },
+            "reducer": { "type": "function" },
+            "initialValue": { "type": "any" },
+            "output": { "type": "any" }
+          }
+        }
+      }
+    }
+  }
+}
